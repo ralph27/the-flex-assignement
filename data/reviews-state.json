@@ -1,0 +1,294 @@
+{
+  "reviews": [
+    {
+      "id": 7453,
+      "listingId": "2b-n1-a-29-shoreditch-heights",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "guestName": "Sarah Johnson",
+      "reviewText": "Amazing property in the heart of Shoreditch! The apartment was spotless and had everything we needed. Host was very responsive and check-in was seamless.",
+      "overallRating": 9.8,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 10,
+        "respectHouseRules": 10,
+        "accuracy": 9,
+        "location": 10
+      },
+      "date": "2024-12-15 14:30:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": true
+    },
+    {
+      "id": 7454,
+      "listingId": "1b-e2-b-hackney-loft",
+      "listingName": "1B E2 B - Hackney Loft",
+      "guestName": "Marcus Chen",
+      "reviewText": "Great stay overall. Location is perfect for exploring the area. Only minor issue was the shower pressure, but everything else was excellent.",
+      "overallRating": 9.2,
+      "categories": {
+        "cleanliness": 9,
+        "communication": 10,
+        "accuracy": 8,
+        "location": 10,
+        "value": 9
+      },
+      "date": "2024-12-10 09:15:00",
+      "channel": "Booking.com",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7455,
+      "listingId": "2b-n1-a-29-shoreditch-heights",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "guestName": "Emily Roberts",
+      "reviewText": "Decent place but had some noise issues from the street at night. Would recommend earplugs for light sleepers. Otherwise, good value for money.",
+      "overallRating": 8.2,
+      "categories": {
+        "cleanliness": 8,
+        "communication": 9,
+        "accuracy": 7,
+        "location": 9,
+        "value": 8
+      },
+      "date": "2024-12-08 16:45:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7456,
+      "listingId": "studio-s3-camden-market-view",
+      "listingName": "Studio S3 - Camden Market View",
+      "guestName": "David Martinez",
+      "reviewText": "Absolutely loved our stay! The apartment exceeded our expectations. Modern, clean, and the location couldn't be better. Will definitely be back!",
+      "overallRating": 9.8,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 10,
+        "accuracy": 10,
+        "location": 10,
+        "checkIn": 10,
+        "value": 9
+      },
+      "date": "2024-12-05 11:20:00",
+      "channel": "Direct",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7457,
+      "listingId": "1b-e2-b-hackney-loft",
+      "listingName": "1B E2 B - Hackney Loft",
+      "guestName": "Lisa Anderson",
+      "reviewText": "Nice apartment but WiFi was unstable during our work calls. Also, no parking nearby which was inconvenient. Otherwise comfortable stay.",
+      "overallRating": 7.4,
+      "categories": {
+        "cleanliness": 8,
+        "communication": 7,
+        "accuracy": 7,
+        "location": 8,
+        "value": 7
+      },
+      "date": "2024-12-01 08:30:00",
+      "channel": "Booking.com",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7458,
+      "listingId": "2b-n1-a-29-shoreditch-heights",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "guestName": "James Wilson",
+      "reviewText": "Perfect for our family weekend! Kids loved the space and we appreciated the well-equipped kitchen. Great communication from the host team.",
+      "overallRating": 9.4,
+      "categories": {
+        "cleanliness": 9,
+        "communication": 10,
+        "accuracy": 9,
+        "location": 9,
+        "checkIn": 10
+      },
+      "date": "2024-11-28 19:45:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7459,
+      "listingId": "studio-s3-camden-market-view",
+      "listingName": "Studio S3 - Camden Market View",
+      "guestName": "Sophie Turner",
+      "reviewText": "Stylish apartment in a vibrant neighborhood. The bed was incredibly comfortable and amenities were top-notch. Highly recommend!",
+      "overallRating": 9.6,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 9,
+        "accuracy": 10,
+        "location": 10,
+        "value": 9
+      },
+      "date": "2024-11-25 14:15:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7460,
+      "listingId": "1b-e2-b-hackney-loft",
+      "listingName": "1B E2 B - Hackney Loft",
+      "guestName": "Robert Kim",
+      "reviewText": "Good location but the apartment felt smaller than the photos suggested. Cleanliness was okay but could be better. Heating worked well though.",
+      "overallRating": 7.4,
+      "categories": {
+        "cleanliness": 7,
+        "communication": 8,
+        "accuracy": 6,
+        "location": 9,
+        "value": 7
+      },
+      "date": "2024-11-20 10:30:00",
+      "channel": "Vrbo",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7461,
+      "listingId": "2b-w1-c-soho-penthouse",
+      "listingName": "2B W1 C - Soho Penthouse",
+      "guestName": "Anna Kowalski",
+      "reviewText": "Exceptional stay from start to finish. The attention to detail in the apartment was impressive. Easy check-in and the host was available when needed.",
+      "overallRating": 9.8,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 10,
+        "accuracy": 10,
+        "location": 9,
+        "checkIn": 10,
+        "value": 10
+      },
+      "date": "2024-11-18 16:00:00",
+      "channel": "Direct",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7462,
+      "listingId": "studio-s3-camden-market-view",
+      "listingName": "Studio S3 - Camden Market View",
+      "guestName": "Michael Brown",
+      "reviewText": "The apartment was clean but quite noisy due to construction nearby. This wasn't mentioned in the listing. Apart from that, good value.",
+      "overallRating": 7.4,
+      "categories": {
+        "cleanliness": 9,
+        "communication": 8,
+        "accuracy": 6,
+        "location": 7,
+        "value": 7
+      },
+      "date": "2024-11-15 09:45:00",
+      "channel": "Booking.com",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7463,
+      "listingId": "2b-w1-c-soho-penthouse",
+      "listingName": "2B W1 C - Soho Penthouse",
+      "guestName": "Jessica Lee",
+      "reviewText": "Wonderful experience! The rooftop terrace was a highlight. Everything was exactly as described. Will recommend to friends visiting London.",
+      "overallRating": 9.6,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 9,
+        "accuracy": 10,
+        "location": 10,
+        "checkIn": 9
+      },
+      "date": "2024-11-12 13:20:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7464,
+      "listingId": "1b-e2-b-hackney-loft",
+      "listingName": "1B E2 B - Hackney Loft",
+      "guestName": "Tom Harris",
+      "reviewText": "Decent property for the price. Could use some updates to the furniture and better lighting. Location is convenient though.",
+      "overallRating": 7.8,
+      "categories": {
+        "cleanliness": 7,
+        "communication": 8,
+        "accuracy": 7,
+        "location": 9,
+        "value": 8
+      },
+      "date": "2024-11-08 11:10:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7465,
+      "listingId": "2b-w1-c-soho-penthouse",
+      "listingName": "2B W1 C - Soho Penthouse",
+      "guestName": "Rachel Green",
+      "reviewText": "Outstanding! Best Airbnb we've stayed at in London. Everything from the decor to the amenities was perfect. The host thought of everything!",
+      "overallRating": 10,
+      "categories": {
+        "cleanliness": 10,
+        "communication": 10,
+        "accuracy": 10,
+        "location": 10,
+        "checkIn": 10,
+        "value": 10
+      },
+      "date": "2024-11-05 15:30:00",
+      "channel": "Airbnb",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7466,
+      "listingId": "studio-s3-camden-market-view",
+      "listingName": "Studio S3 - Camden Market View",
+      "guestName": "Chris Evans",
+      "reviewText": "Good for a short stay. Bathroom could be cleaner and the kitchen needs better cookware. But bed was comfortable and location was great.",
+      "overallRating": 8,
+      "categories": {
+        "cleanliness": 7,
+        "communication": 9,
+        "accuracy": 8,
+        "location": 9,
+        "value": 7
+      },
+      "date": "2024-11-01 10:15:00",
+      "channel": "Vrbo",
+      "type": "guest-to-host",
+      "approved": false
+    },
+    {
+      "id": 7467,
+      "listingId": "2b-n1-a-29-shoreditch-heights",
+      "listingName": "2B N1 A - 29 Shoreditch Heights",
+      "guestName": "Olivia Martinez",
+      "reviewText": "Lovely apartment with all the essentials. Great for remote work with fast WiFi and a comfortable desk. Would stay again!",
+      "overallRating": 9.2,
+      "categories": {
+        "cleanliness": 9,
+        "communication": 10,
+        "accuracy": 9,
+        "location": 9,
+        "checkIn": 9,
+        "value": 9
+      },
+      "date": "2024-10-28 12:45:00",
+      "channel": "Direct",
+      "type": "guest-to-host",
+      "approved": false
+    }
+  ],
+  "lastUpdated": "2025-10-24T18:08:48.736Z"
+}
