@@ -1,8 +1,7 @@
 const HOSTAWAY_API_BASE = "https://api.hostaway.com/v1";
-const ACCOUNT_ID = process.env.HOSTAWAY_ACCOUNT_ID || "61148";
+const ACCOUNT_ID = process.env.HOSTAWAY_ACCOUNT_ID!;
 const API_KEY =
-  process.env.HOSTAWAY_API_KEY ||
-  "f94377ebbbb479490bb3ec364649168dc443dda2e4830facaf5de2e74ccc9152";
+  process.env.HOSTAWAY_API_KEY!;
 
 let accessToken: string | null = null;
 let tokenExpiry: number = 0;
