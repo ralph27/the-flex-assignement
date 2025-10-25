@@ -35,6 +35,9 @@ Located at the top of the dashboard, four key metric cards provide at-a-glance i
 - **Calculation**: Mean of all review ratings (out of 10.0)
 - **Display**: One decimal precision (e.g., "9.4")
 - **Trend Indicator**: Shows percentage change vs. previous 30-day period
+- **Colors**: 
+  - Green ↑ for positive trends
+  - Red ↓ for negative trends
 
 #### Total Reviews
 - **Count**: All reviews in the system
@@ -452,6 +455,276 @@ filteredReviews = reviews.filter(review => {
 
 ---
 
+## Google Reviews Integration
+
+### Overview
+
+The system supports integration with Google Places API to fetch and display reviews from Google Maps alongside reviews from booking platforms.
+
+### Features
+
+#### 1. Place Search & Configuration
+
+**GooglePlaceConfig Component**:
+- Search for properties on Google Maps by name
+- Preview search results with ratings and review counts
+- Select and link the correct Google Place to a listing
+- One-click sync of Google reviews
+
+**Search Flow**:
+```
+1. Enter property name or address
+2. Click "Search"
+3. Review results showing:
+   - Place name
+   - Star rating
+   - Total review count
+   - Place ID
+4. Select matching place via radio button
+5. Click "Sync Reviews Now"
+```
+
+#### 2. Review Normalization
+
+Google reviews are automatically normalized to match the internal schema:
+
+**Mapping**:
+- `authorAttribution.displayName` → `guestName`
+- `text.text` (or `originalText.text`) → `reviewText`
+- `rating` → `overallRating` (1-5 scale)
+- `publishTime` → `date`
+- Channel automatically set to "Google"
+- Type set to "guest-to-host"
+- **Auto-approved**: `approved: true` by default
+
+**ID Generation**:
+```javascript
+// Extracts numeric ID from review resource name
+// Falls back to timestamp if extraction fails
+id = parseInt(review.name.split("/").pop().replace(/\D/g, ""))
+```
+
+#### 3. API Endpoints
+
+##### GET `/api/google/search`
+Search for places by text query
+
+**Parameters**:
+- `q` (required): Search query string
+
+**Response**:
+```json
+{
+  "places": [
+    {
+      "id": "places/ChIJN1t_tDeuEmsRUsoyG83frY4",
+      "name": "Property Name",
+      "rating": 4.8,
+      "totalRatings": 245,
+      "url": "https://maps.google.com/?cid=..."
+    }
+  ]
+}
+```
+
+##### GET `/api/google/place`
+Get details for a specific place
+
+**Parameters**:
+- `placeId` (required): Google Place ID (format: `places/ChIJ...`)
+
+**Response**:
+```json
+{
+  "id": "places/ChIJ...",
+  "name": "Property Name",
+  "rating": 4.8,
+  "userRatingCount": 245,
+  "googleMapsUri": "https://maps.google.com/?cid=..."
+}
+```
+
+##### GET `/api/google/reviews`
+Fetch reviews for a place and normalize them
+
+**Parameters**:
+- `placeId` (required): Google Place ID
+- `listingId` (required): Internal listing identifier
+- `listingName` (required): Property name
+
+**Response**:
+```json
+{
+  "place": { /* place details */ },
+  "reviews": [ /* normalized reviews */ ],
+  "rawReviews": [ /* original Google format */ ],
+  "attributionRequired": true
+}
+```
+
+#### 4. Server Actions
+
+##### `syncGoogleReviews()`
+Fetches and normalizes Google reviews for a property
+
+**Parameters**:
+- `placeId`: Google Place ID
+- `listingId`: Internal listing ID
+- `listingName`: Property name
+
+**Returns**:
+```typescript
+{
+  success: boolean;
+  reviews?: NormalizedReview[];
+  error?: string;
+}
+```
+
+**Side Effects**:
+- Revalidates `/dashboard` and `/reviews` paths
+- Updates cache with new reviews
+
+##### `searchGooglePlaces()`
+Searches Google Places by text query
+
+**Parameters**:
+- `query`: Search string
+
+**Returns**:
+```typescript
+{
+  success: boolean;
+  places?: GooglePlaceDetails[];
+  error?: string;
+}
+```
+
+#### 5. Display & Attribution
+
+**GoogleReviewCard Component**:
+Displays individual Google reviews with required attribution
+
+**Features**:
+- Guest name and review date
+- Star rating (1-5 scale)
+- Full review text
+- **Google attribution footer**: Shows Google logo + "Powered by Google" text
+
+**Attribution Requirements**:
+```jsx
+<div className="flex items-center gap-2 text-xs text-gray-500">
+  <img src="[Google logo URL]" alt="Google" />
+  <span>Powered by Google</span>
+</div>
+```
+
+**Compliance**:
+- Required by Google Places API Terms of Service
+- Must be displayed on all Google reviews
+- Logo and text must be clearly visible
+
+#### 6. Technical Implementation
+
+**GooglePlacesClient Class**:
+```typescript
+class GooglePlacesClient {
+  // Search for places
+  async searchText(query: string): Promise<GooglePlaceDetails[]>
+  
+  // Get detailed place information
+  async getPlaceDetails(placeId: string): Promise<GooglePlaceDetails>
+  
+  // Get reviews for a place
+  async getReviews(placeId: string): Promise<GooglePlaceReview[]>
+}
+```
+
+**Authentication**:
+- API Key: Set via `GOOGLE_PLACES_API_KEY` environment variable
+- Header: `X-Goog-Api-Key: YOUR_API_KEY`
+
+**Caching**:
+- Search results: 24 hours (`revalidate: 86400`)
+- Place details: 6 hours (`revalidate: 21600`)
+
+### Limitations & Considerations
+
+#### API Restrictions
+1. **Review Count**: Google typically returns only ~5 most recent reviews
+2. **Historical Data**: Full review history not available via API
+3. **Update Frequency**: Reviews may be delayed vs. Google Maps website
+4. **Rate Limits**: Subject to Google Places API quotas
+
+### Setup Instructions
+
+#### 1. Obtain API Key
+```bash
+1. Go to Google Cloud Console
+2. Create new project or select existing
+3. Enable "Places API (New)"
+4. Create API key with Places API access
+5. Restrict key to your domain (production)
+```
+
+#### 2. Configure Environment
+```bash
+# .env.local
+GOOGLE_PLACES_API_KEY=AIza...your-key-here
+```
+
+#### 3. Verify Installation
+```bash
+# Test search endpoint
+curl "https://your-domain.com/api/google/search?q=Your+Property+Name"
+
+# Should return places array
+```
+
+#### 4. Link Properties
+1. Navigate to property configuration
+2. Use GooglePlaceConfig component
+3. Search for property
+4. Select correct place from results
+5. Sync reviews
+
+### Integration Workflow
+
+```
+Property Manager Flow:
+1. Open property settings
+2. Search for property on Google
+3. Confirm correct place by reviewing rating/count
+4. Click "Sync Reviews Now"
+5. Google reviews appear in dashboard
+6. Reviews auto-approved (unless manually changed)
+7. Display on property page with attribution
+
+Technical Flow:
+User Input → API Search → Place Selection → 
+Review Fetch → Normalization → Storage → 
+Display with Attribution
+```
+
+### Error Handling
+
+**Common Errors**:
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "API key not configured" | Missing env variable | Set `GOOGLE_PLACES_API_KEY` |
+| "Place not found" | Invalid Place ID | Re-search and re-link |
+| "API quota exceeded" | Too many requests | Implement rate limiting |
+| "Permission denied" | API key restrictions | Check API key settings |
+
+**Error Response Format**:
+```json
+{
+  "success": false,
+  "error": "Descriptive error message"
+}
+```
+
 ## Future Enhancements
 
 Potential improvements for consideration:
@@ -463,3 +736,6 @@ Potential improvements for consideration:
 - Mobile app version
 - Multi-language support
 - Custom approval workflows
+- Automatic Google review sync scheduling
+- Review photo integration
+- Multi-location Google Places management
