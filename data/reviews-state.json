@@ -287,8 +287,8 @@
       "date": "2024-10-28 12:45:00",
       "channel": "Direct",
       "type": "guest-to-host",
-      "approved": false
+      "approved": true
     }
   ],
-  "lastUpdated": "2025-10-24T18:31:37.965Z"
+  "lastUpdated": "2025-10-25T10:25:02.132Z"
 }

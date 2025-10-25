@@ -62,3 +62,43 @@ export interface FilterOptions {
   dateRange: string;
   status: string;
 }
+
+
+	export interface GooglePlaceReview {
+	  name: string; // resource name from new API
+	  relativePublishTimeDescription: string;
+	  rating: number;
+	  text: { text: string; languageCode: string };
+	  originalText?: { text: string; languageCode: string };
+	  authorAttribution: {
+	    displayName: string;
+	    uri: string;
+	    photoUri?: string;
+	  };
+	  publishTime: string;
+	}
+	
+	export interface GooglePlaceDetails {
+	  id: string; // places/ChIJ...
+	  displayName: { text: string; languageCode: string };
+	  rating?: number;
+	  userRatingCount?: number;
+	  googleMapsUri?: string;
+	  reviews?: GooglePlaceReview[];
+	}
+	
+	export interface PropertyGoogleConfig {
+	  listingId: string;
+	  listingName: string;
+	  placeId?: string; // places/ChIJ... format
+	  lastSynced?: string;
+	  enabled: boolean;
+	}
+	
+	// Extend NormalizedReview to support Google metadata
+	export interface GoogleReviewMetadata {
+	  authorUri?: string;
+	  authorPhotoUri?: string;
+	  publishTime: string;
+	  languageCode?: string;
+	}
